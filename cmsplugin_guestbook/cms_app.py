@@ -6,6 +6,6 @@ from cms.apphook_pool import apphook_pool
 
 class GuestbookApphook(CMSApp):
     name = _('Guestbook')
-    urls = ['app.urls']
+    urls = ['cmsplugin_guestbook.urls']
 
 apphook_pool.register(GuestbookApphook)
