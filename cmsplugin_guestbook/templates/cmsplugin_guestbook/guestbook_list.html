@@ -1,0 +1,19 @@
+{% load guestbook i18n %}
+
+{% block content %}
+<h2>{% trans "Írj a vendégkönyvbe" %}</h2>
+
+<ul class="row guestbook">
+{% for object in object_list %}
+<li><div class="span4">{% if object.webpage %}<a href="{{object.webpage}}">{%endif%}
+	{{ object.name}}
+	{% if object.webpage %}</a>{%endif%}</div>
+	<span class="created span4">{% trans "Sent on" %} {{ object.created|date:"SHORT_DATE_FORMAT" }}</span>
+	<div class="message span8">{{ object.message|striptags|linebreaks }}</div>
+</li>
+{% empty %}
+<li>No messages</li>
+{% endfor %}
+</ul>
+{% guestbook_form %}
+{% endblock %}
